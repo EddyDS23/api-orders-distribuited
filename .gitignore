@@ -1,0 +1,11 @@
+
+.pytest_cache
+.env
+.venv
+./app/__pycache__
+./app/api/__pycache__
+./app/domain/entities/__pycache__
+./app/domain/exceptions/__pycache__
+./app/domain/value_objects/__pycache__
+./app/infrastructure/persistence/database/__pycache__
+./app/infrastructure/persistence/models/__pycache__
