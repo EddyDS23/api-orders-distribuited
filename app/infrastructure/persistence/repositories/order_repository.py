@@ -25,7 +25,6 @@ class OrderRepository:
             item_model = OrderItemModel.from_domain(item)
             self._session.add(item_model)
 
-        
 
         self._session.commit()
 
@@ -38,9 +37,15 @@ class OrderRepository:
             return None
 
         return model.to_domain()
+    
 
-
+    def get_all(self,limit:int,offset:int) -> list[Order]:
         
+        models = self._session.query(OrderModel).limit(limit).offset(offset)
+
+        return [OrderModel.to_domain(order) for order in models]
+
+
 
         
     

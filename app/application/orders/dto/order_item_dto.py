@@ -1,11 +1,11 @@
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 from uuid import UUID
 
 class OrderItemInputDTO(BaseModel):
-    product_id:str
-    quantity:int
-    unit_price:float
+    product_id:str = Field(...,min_length=1)
+    quantity:int = Field(...,gt=0,le=100)
+    unit_price:float = Field(...,gt=0)
 
 
 class OrderItemOutputDTO(BaseModel):
@@ -15,4 +15,3 @@ class OrderItemOutputDTO(BaseModel):
     unit_price:float
     subtotal:float
 
-    

@@ -31,6 +31,6 @@ class ConfirmOrderUseCase:
 
         self._orderRepository.save(order)
 
-        return OrderResponseDTO.model_validate(order)
+        return OrderResponseDTO.from_domain(order)
 
 

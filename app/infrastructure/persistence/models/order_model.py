@@ -38,7 +38,7 @@ class OrderModel(Base):
 
         return Order(
             id=self.id,
+            user_id=self.user_id,
             status=OrderStatus(self.status),
-            total = Money(self.total),
             items = domain_items
         )

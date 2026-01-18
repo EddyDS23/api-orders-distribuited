@@ -36,7 +36,3 @@ class OrderResponseDTO(BaseModel):
             total=order.total.amount,
             items=items_dto
         )
-
-
-    model_config = ConfigDict(from_attributes=True)
-    
