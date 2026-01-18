@@ -10,3 +10,6 @@ class EmptyOrderError(DomainError):
 class InvalidOperationOrderError(DomainError):
     pass
 
+class OrderNotFoundException(DomainError):
+    pass
+

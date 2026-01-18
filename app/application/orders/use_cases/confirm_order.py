@@ -1,6 +1,6 @@
 from app.application.orders.dto.orders_dto import (OrderResponseDTO)
 
-from app.domain.exceptions.order_exceptions import (EmptyOrderError, InvalidOperationOrderError)
+from app.domain.exceptions.order_exceptions import (EmptyOrderError, InvalidOperationOrderError, OrderNotFoundException)
 
 from app.infrastructure.persistence.repositories.order_repository import OrderRepository
 
@@ -18,16 +18,9 @@ class ConfirmOrderUseCase:
         order = self._orderRepository.get_by_id(order_id)
 
         if not order:
-            raise ValueError(f"Order {order_id} not found")
+            raise OrderNotFoundException(f"Order {order_id} not found")
         
-
-        try:
-            order.confirm()
-        except EmptyOrderError as e:
-            raise e
-        except InvalidOperationOrderError as e:
-            raise e
-        
+        order.confirm()
 
         self._orderRepository.save(order)
 

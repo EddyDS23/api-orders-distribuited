@@ -46,6 +46,10 @@ class OrderRepository:
         return [OrderModel.to_domain(order) for order in models]
 
 
+    def count(self) -> int:
+        return self._session.query(OrderModel).count()
+
+
 
         
     
