@@ -1,7 +1,9 @@
 from fastapi import APIRouter
-from .health import router as healt_router
+from .health import router as health_router
+from .orders_router import router as order_router
 
 
 router = APIRouter()
 
-router.include_router(healt_router)
+router.include_router(health_router)
+router.include_router(order_router)

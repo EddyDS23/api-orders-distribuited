@@ -9,3 +9,5 @@
 ./app/domain/value_objects/__pycache__
 ./app/infrastructure/persistence/database/__pycache__
 ./app/infrastructure/persistence/models/__pycache__
+./alembic/__pycache__
+./alembic/versions/__pycache__

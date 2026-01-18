@@ -5,7 +5,7 @@ from dataclasses import dataclass
 class Money:
     amount:float
 
-    def __post_init_(self):
+    def __post_init__(self):
         if self.amount < 0:
             raise ValueError("Money cannot be negative")
         
