@@ -4,12 +4,11 @@ from uuid import UUID
 from app.application.orders.dto.order_item_dto import UpdateItemInputDTO
 from app.application.orders.dto.orders_dto import OrderResponseDTO
 
-from app.domain.exceptions.item_exceptions import ItemNotExistingInOrder
 from app.domain.exceptions.order_exceptions import OrderNotFoundException
 
 from app.infrastructure.persistence.repositories.order_repository import OrderRepository
 
-class UpdateItemToOrder:
+class UpdateItemFromOrderUseCase:
 
     def __init__(self, orderRepository:OrderRepository):
         self._orderRepository = orderRepository

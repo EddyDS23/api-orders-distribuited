@@ -22,8 +22,8 @@ class AddItemToOrderUseCase:
             raise OrderNotFoundException(f"Order {order_id} not found")
 
         for item in order.items:
-            if item.product_id != input_dto.product_id:
-               raise ItemExistingInOrder(f"Item {item.id} existing in order ")
+            if item.product_id == input_dto.product_id:
+               raise ItemExistingInOrder(f"Product {item.id} already exists in order ")
         
         order.add_item(product_id=input_dto.product_id,
                         unit_price=Money(input_dto.unit_price),

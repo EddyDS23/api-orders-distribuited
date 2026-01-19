@@ -17,6 +17,6 @@ class OrderItemOutputDTO(BaseModel):
 
 
 class UpdateItemInputDTO(BaseModel):
-    quantity:int
+    quantity:int = Field(gt=0, le=100, description="New quantity")
     
 

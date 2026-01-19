@@ -6,7 +6,7 @@ from app.application.orders.dto.orders_dto import OrderResponseDTO
 
 from app.infrastructure.persistence.repositories.order_repository import OrderRepository
 
-class RemoveItemToOrderUseCase:
+class RemoveItemFromOrderUseCase:
 
     def __init__(self,orderRepository:OrderRepository):
         self._orderRepository = orderRepository
@@ -25,7 +25,7 @@ class RemoveItemToOrderUseCase:
 
         return OrderResponseDTO.from_domain(order)
     
-    
+
 
 
 

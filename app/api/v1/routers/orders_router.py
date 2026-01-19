@@ -2,14 +2,20 @@
 from fastapi import APIRouter, Depends, status
 from uuid import UUID
 from sqlalchemy.orm import Session
+
 from app.application.orders.dto.orders_dto import  OrderCreateInputDTO, OrderResponseDTO
 from app.application.orders.dto.paginated_orders_dto import PaginatedOrdersOResponseDTO
+
 from app.application.orders.use_cases.confirm_order import ConfirmOrderUseCase
 from app.application.orders.use_cases.create_order import CreateOrderUseCase
 from app.application.orders.use_cases.get_by_id_order import GetByIdUseCase
 from app.application.orders.use_cases.get_all_orders import GetAllOrderUseCase
 from app.application.orders.use_cases.cancel_order import CancelOrderUseCase
+
 from app.infrastructure.persistence.repositories.order_repository import OrderRepository
+
+from app.api.v1.routers.items_router import router as items_router
+
 from app.infrastructure.persistence.database.connection import get_db
 
 router = APIRouter(prefix="/orders",tags=["Orders"])
@@ -47,3 +53,6 @@ def confirmed(order_id:UUID,repository:OrderRepository=Depends(get_repository)) 
 def cancel(order_id:UUID, repository:OrderRepository = Depends(get_repository)) -> OrderResponseDTO:
     use_case = CancelOrderUseCase(repository)
     return use_case.execute(order_id)
+
+
+router.include_router(items_router)
