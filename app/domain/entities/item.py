@@ -20,7 +20,6 @@ class OrderItem:
         if self.unit_price.amount < 0:
             raise ValueError("Price cannot be negative")
 
-
     @property
     def subtotal(self) -> Money:
         '''Calculate subtotal a item'''

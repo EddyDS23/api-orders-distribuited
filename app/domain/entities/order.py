@@ -5,6 +5,8 @@ from app.domain.exceptions.order_exceptions import (
     EmptyOrderError,InvalidOperationOrderError
 )
 
+from app.domain.exceptions.item_exceptions import ItemNotExistingInOrder
+
 from app.domain.entities.item import OrderItem
 
 from app.domain.value_objects.order_status import OrderStatus
@@ -35,7 +37,7 @@ class Order:
             raise InvalidOperationOrderError("" \
             "Cannot modify an order that is not in CREATED status"
             )
-
+        
         item = OrderItem(
             product_id=product_id,
             quantity=quantity,
@@ -73,7 +75,7 @@ class Order:
         
         item = self.get_item(item_id)
         if not item:
-            raise ValueError(f"Item {item_id} not found in order")
+            raise ItemNotExistingInOrder(f"Item {item_id} not found in order")
 
         item.update_quantity_in_order(new_quantity)
 
